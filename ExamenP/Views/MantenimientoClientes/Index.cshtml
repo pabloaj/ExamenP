@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+<input type="button" id="btn_new" class="btn btn-primary btn-outline btn-xs" value="New" />
+<table id="ClientesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Nit</th>
+            
+            <th>Accion</th>
+
+        </tr>
+    </thead>
+</table>
+<div id="Dialog_" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 id="tiitle" class="text-primary modal-title">Modulo Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="Input_nombre" class="col-sm-2 control-label  text-primary">Nombre</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Input_nombre" placeholder="Nombre" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Input_Direccion" class="col-sm-2 control-label  text-primary">Direccion</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Input_Direccion" placeholder="Direccion" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Input_Telefono" class="col-sm-2 control-label  text-primary">Telefono</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="Input_Telefono" placeholder="Telefono" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Input_Nit" class="col-sm-2 control-label  text-primary">Nit</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Input_Nit" placeholder="Nit" />
+                        </div>
+                    </div>
+                    
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input id="btn_Cancel" type="button" value="Cancel" class="btn btn-outline btn-danger btn-xs" />
+
+                <input type="button" id="btn_Update" class="btn btn-outline btn btn-primary btn-xs" value="Update" />
+                <input type="button" id="btn_Save" class="btn btn-outline btn btn-primary btn-xs" value="Guardar" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    <script src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/Cliente/js.js")"></script>
+}
+
+
+
+

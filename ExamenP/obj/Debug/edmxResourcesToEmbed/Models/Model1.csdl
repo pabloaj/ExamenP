@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="examenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="P_Clientes">
+    <Key>
+      <PropertyRef Name="Id_Cliente" />
+    </Key>
+    <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nit" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="P_Facturas" Relationship="Self.FK__P_Factura__Clien__762C88DA" FromRole="P_Clientes" ToRole="P_Facturas" />
+  </EntityType>
+  <EntityType Name="P_Detalle">
+    <Key>
+      <PropertyRef Name="ID_detalle" />
+    </Key>
+    <Property Name="ID_detalle" Type="Int32" Nullable="false" />
+    <Property Name="Factura_id" Type="Int32" />
+    <Property Name="Producto_id" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="P_Facturas" Relationship="Self.FK__P_Detalle__Factu__7908F585" FromRole="P_Detalle" ToRole="P_Facturas" />
+    <NavigationProperty Name="P_Productos" Relationship="Self.FK__P_Detalle__Produ__79FD19BE" FromRole="P_Detalle" ToRole="P_Productos" />
+  </EntityType>
+  <EntityType Name="P_Facturas">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="Int32" Nullable="false" />
+    <Property Name="No_Factura" Type="Int32" />
+    <Property Name="Cliente_id" Type="Int32" />
+    <Property Name="Usuario_id" Type="Int32" />
+    <NavigationProperty Name="P_Clientes" Relationship="Self.FK__P_Factura__Clien__762C88DA" FromRole="P_Facturas" ToRole="P_Clientes" />
+    <NavigationProperty Name="P_Detalle" Relationship="Self.FK__P_Detalle__Factu__7908F585" FromRole="P_Facturas" ToRole="P_Detalle" />
+  </EntityType>
+  <EntityType Name="P_Productos">
+    <Key>
+      <PropertyRef Name="Id_producto" />
+    </Key>
+    <Property Name="Id_producto" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Codigo" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="P_Detalle" Relationship="Self.FK__P_Detalle__Produ__79FD19BE" FromRole="P_Productos" ToRole="P_Detalle" />
+  </EntityType>
+  <EntityType Name="P_Usuario">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__P_Factura__Clien__762C88DA">
+    <End Role="P_Clientes" Type="Self.P_Clientes" Multiplicity="0..1" />
+    <End Role="P_Facturas" Type="Self.P_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Clientes">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="P_Facturas">
+        <PropertyRef Name="Cliente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__P_Detalle__Factu__7908F585">
+    <End Role="P_Facturas" Type="Self.P_Facturas" Multiplicity="0..1" />
+    <End Role="P_Detalle" Type="Self.P_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Facturas">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="P_Detalle">
+        <PropertyRef Name="Factura_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__P_Detalle__Produ__79FD19BE">
+    <End Role="P_Productos" Type="Self.P_Productos" Multiplicity="0..1" />
+    <End Role="P_Detalle" Type="Self.P_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Productos">
+        <PropertyRef Name="Id_producto" />
+      </Principal>
+      <Dependent Role="P_Detalle">
+        <PropertyRef Name="Producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="examenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="P_Clientes" EntityType="Self.P_Clientes" />
+    <EntitySet Name="P_Detalle" EntityType="Self.P_Detalle" />
+    <EntitySet Name="P_Facturas" EntityType="Self.P_Facturas" />
+    <EntitySet Name="P_Productos" EntityType="Self.P_Productos" />
+    <EntitySet Name="P_Usuario" EntityType="Self.P_Usuario" />
+    <AssociationSet Name="FK__P_Factura__Clien__762C88DA" Association="Self.FK__P_Factura__Clien__762C88DA">
+      <End Role="P_Clientes" EntitySet="P_Clientes" />
+      <End Role="P_Facturas" EntitySet="P_Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__P_Detalle__Factu__7908F585" Association="Self.FK__P_Detalle__Factu__7908F585">
+      <End Role="P_Facturas" EntitySet="P_Facturas" />
+      <End Role="P_Detalle" EntitySet="P_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__P_Detalle__Produ__79FD19BE" Association="Self.FK__P_Detalle__Produ__79FD19BE">
+      <End Role="P_Productos" EntitySet="P_Productos" />
+      <End Role="P_Detalle" EntitySet="P_Detalle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

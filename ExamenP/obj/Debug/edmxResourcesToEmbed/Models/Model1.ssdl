@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="examenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="P_Clientes">
+    <Key>
+      <PropertyRef Name="Id_Cliente" />
+    </Key>
+    <Property Name="Id_Cliente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="100" />
+    <Property Name="nit" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="P_Detalle">
+    <Key>
+      <PropertyRef Name="ID_detalle" />
+    </Key>
+    <Property Name="ID_detalle" Type="int" Nullable="false" />
+    <Property Name="Factura_id" Type="int" />
+    <Property Name="Producto_id" Type="int" />
+    <Property Name="cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="P_Facturas">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="int" Nullable="false" />
+    <Property Name="No_Factura" Type="int" />
+    <Property Name="Cliente_id" Type="int" />
+    <Property Name="Usuario_id" Type="int" />
+  </EntityType>
+  <EntityType Name="P_Productos">
+    <Key>
+      <PropertyRef Name="Id_producto" />
+    </Key>
+    <Property Name="Id_producto" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" />
+    <Property Name="Codigo" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="P_Usuario">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" />
+    <Property Name="Apellido" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__P_Detalle__Factu__7908F585">
+    <End Role="P_Facturas" Type="Self.P_Facturas" Multiplicity="0..1" />
+    <End Role="P_Detalle" Type="Self.P_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Facturas">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="P_Detalle">
+        <PropertyRef Name="Factura_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__P_Detalle__Produ__79FD19BE">
+    <End Role="P_Productos" Type="Self.P_Productos" Multiplicity="0..1" />
+    <End Role="P_Detalle" Type="Self.P_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Productos">
+        <PropertyRef Name="Id_producto" />
+      </Principal>
+      <Dependent Role="P_Detalle">
+        <PropertyRef Name="Producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__P_Factura__Clien__762C88DA">
+    <End Role="P_Clientes" Type="Self.P_Clientes" Multiplicity="0..1" />
+    <End Role="P_Facturas" Type="Self.P_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="P_Clientes">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="P_Facturas">
+        <PropertyRef Name="Cliente_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="examenModelStoreContainer">
+    <EntitySet Name="P_Clientes" EntityType="Self.P_Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Detalle" EntityType="Self.P_Detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Facturas" EntityType="Self.P_Facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Productos" EntityType="Self.P_Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="P_Usuario" EntityType="Self.P_Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__P_Detalle__Factu__7908F585" Association="Self.FK__P_Detalle__Factu__7908F585">
+      <End Role="P_Facturas" EntitySet="P_Facturas" />
+      <End Role="P_Detalle" EntitySet="P_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__P_Detalle__Produ__79FD19BE" Association="Self.FK__P_Detalle__Produ__79FD19BE">
+      <End Role="P_Productos" EntitySet="P_Productos" />
+      <End Role="P_Detalle" EntitySet="P_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__P_Factura__Clien__762C88DA" Association="Self.FK__P_Factura__Clien__762C88DA">
+      <End Role="P_Clientes" EntitySet="P_Clientes" />
+      <End Role="P_Facturas" EntitySet="P_Facturas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

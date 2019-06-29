@@ -1,0 +1,71 @@
+﻿<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+<div id="NewAdd">
+    <div class="row" id="row1">
+        <div class="col-xs-3 form-group">
+            <label>Nit</label>
+            <input type="text" class="form-control" id="InputNit" placeholder="Nit" value="" />
+        </div>
+        <div class="col-xs-3 form-group ">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="InputNombre" placeholder="Nombre" value="" />
+        </div>
+        <div class="col-xs-3 form-group">
+            <label>Direccion</label>
+            <input type="text" class="form-control" id="InPutDireccion" placeholder="Direccion" value="" disabled />
+        </div>
+        <div class="col-xs-3 form-group ui-widget">
+            <label>Telefono</label>
+            <input type="text" class="form-control" id="InputTelefono" placeholder="Telefono" disabled />
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-4">
+            <label>Codigo</label>
+            <input type="text" class="form-control" id="InputCodigo" placeholder="Codigo" />
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>Descripcion</label>
+            <input type="text" class="form-control" id="InputDescripcion" placeholder="Descripcion" disabled />
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>Cantidad</label>
+            <input type="text" class="form-control" id="InputCantidad" placeholder="Cantidad" />
+        </div>
+
+    </div>
+    <table id="TableFacturacion" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Medida</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Accion</th>
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Totals</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+@{
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/js/Factura/js.js")"></script>
+}

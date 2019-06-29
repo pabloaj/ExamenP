@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="examenModelStoreContainer" CdmEntityContainer="examenEntities">
+    <EntitySetMapping Name="P_Clientes">
+      <EntityTypeMapping TypeName="examenModel.P_Clientes">
+        <MappingFragment StoreEntitySet="P_Clientes">
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Detalle">
+      <EntityTypeMapping TypeName="examenModel.P_Detalle">
+        <MappingFragment StoreEntitySet="P_Detalle">
+          <ScalarProperty Name="ID_detalle" ColumnName="ID_detalle" />
+          <ScalarProperty Name="Factura_id" ColumnName="Factura_id" />
+          <ScalarProperty Name="Producto_id" ColumnName="Producto_id" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Facturas">
+      <EntityTypeMapping TypeName="examenModel.P_Facturas">
+        <MappingFragment StoreEntitySet="P_Facturas">
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="No_Factura" ColumnName="No_Factura" />
+          <ScalarProperty Name="Cliente_id" ColumnName="Cliente_id" />
+          <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Productos">
+      <EntityTypeMapping TypeName="examenModel.P_Productos">
+        <MappingFragment StoreEntitySet="P_Productos">
+          <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Usuario">
+      <EntityTypeMapping TypeName="examenModel.P_Usuario">
+        <MappingFragment StoreEntitySet="P_Usuario">
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
