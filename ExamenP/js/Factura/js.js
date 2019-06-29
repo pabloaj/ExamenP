@@ -36,11 +36,11 @@
 
             id_global = this.id;
             table.row($(this).parents('tr')).remove().draw(false);
-            var data = table.rows().data();
+            var data = table.rows(this).data();
             data.each(function (value, index) {
                 console.log(`For index ${index}, data value is ${value}`);
             });
-            alert(Table.cell(this, 2).data());
+            
             //$.getJSON("/MantenimentoProducto/Get_Edit", { Id: id_global })
             //    .done(function (data) {
 
@@ -110,11 +110,11 @@
         if (code == 13) {
             $.getJSON("/Facturacion/Get_Cantidad", { Codigo: $("#InputCodigo").val(), Cantidad: $("#InputCantidad").val()})
                 .done(function (data) {
-                    var htmlv = '<td><input type ="button" class= "btn btn-outline btn-success btn-xs btn_Edit" value = "Edit" id="' + '"/></td>';
+                    
                     var cantidadInt = parseInt($("#InputCantidad").val());
                     var fprecio = parseFloat(data.data[0].Precio);
                     var total = fprecio * cantidadInt;
-                    
+                    var htmlv = '<td><input type ="button" class= "btn btn-outline btn-success btn-xs btn_Edit" value = "Edit" id="' + data.data[0].Id_Producto + "," + cantidadInt+'"/></td>';
                     table.row.add([
                         data.data[0].Id_Producto,
                         data.data[0].Codigo,
